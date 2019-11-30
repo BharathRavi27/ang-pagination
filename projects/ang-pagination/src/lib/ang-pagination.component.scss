@@ -1,0 +1,16 @@
+.ang-pagination {
+    .ang-paination-step, .ang-paination-last, .ang-paination-first, .ang-paination-next, .ang-paination-prev {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid #671cfa;
+    border-radius: 5px;
+    margin: 0px 5px;
+    color: #222;
+    cursor: pointer;
+    &.active, &:hover {
+        background: #671cfa;
+        color: #f5f5f5;
+    }
+ 
+    }
+}
