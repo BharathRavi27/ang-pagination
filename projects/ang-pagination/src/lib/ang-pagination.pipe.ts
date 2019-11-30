@@ -1,16 +1,25 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DataService } from './ang-pagination.service';
+import { AngPaginationService } from './ang-pagination.service';
+
+// Option interface
+interface Options {
+  itemsPerPage: number
+}
 
 @Pipe({
-  name: 'pagination',
+  name: 'angPagination',
   pure: false
 })
-export class PaginationsPipe implements PipeTransform {
-  constructor(public dataService: DataService) { }
-  transform(value: any[]): any {
-    this.dataService.totalItems = value.length;
-    const start = (this.dataService.page - 1) * this.dataService.itemsPerPage;
-    const end = start + this.dataService.itemsPerPage
+export class AngPaginationPipe implements PipeTransform {
+  constructor(public angService: AngPaginationService) { }
+  transform(value: any[], options: Options): any {
+    // set items per page
+    this.angService.itemsPerPage = Number(options.itemsPerPage);
+    // setting total items in service
+    this.angService.totalItems = value.length;
+    const start = (this.angService.page - 1) * this.angService.itemsPerPage;
+    const end = start + this.angService.itemsPerPage;
+    // return sliced items
     return value.slice(start, end);
   }
 

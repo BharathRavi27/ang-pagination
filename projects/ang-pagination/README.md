@@ -1,24 +1,71 @@
-# AngPagination
+# ang-pagination --- Pagination for Angular
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+A simple lightweight package for managing pagination inside angular applications.
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name --project ang-pagination` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ang-pagination`.
-> Note: Don't forget to add `--project ang-pagination` or else it will be added to the default project in your `angular.json` file. 
+Play with it on StackBlitz here: https://stackblitz.com/edit/ang-pagination
 
-## Build
 
-Run `ng build ang-pagination` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Quick Start
 
-## Publishing
+```
+npm install ang-pagination --save
+```
 
-After building your library with `ng build ang-pagination`, go to the dist folder `cd dist/ang-pagination` and run `npm publish`.
+## Simple Example
 
-## Running unit tests
+```TypeScript
+// app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-Run `ng test ang-pagination` to execute the unit tests via [Karma](https://karma-runner.github.io).
+import { AppComponent } from './app.component';
+import { AngPaginationModule } from 'ang-pagination';
 
-## Further help
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AngPaginationModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+
+```TypeScript
+// app.component.ts
+import {Component} from '@angular/core';
+
+@Component({
+    selector: 'app-component',
+    template: `
+            <tbody>
+              <tr *ngFor="let item of data | angPagination: { itemsPerPage: 5 }">
+                <td>{{item.id}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.body}}</td>
+              </tr>
+            </tbody>
+               
+    <ang-pagination (pageChanged)="pageChanged($event)" [totalItems]="data.length"></ang-pagination>
+    `
+})
+export class MyComponent {
+    itemsPerPage: number = 5;
+    data: any[] = [{"id": 1,"title": "sunt facere "},{"id": 2,"title": "qui e"}]; // any array
+
+  pageChanged(e) {
+      // do things on page change
+  }
+}
+```
+
+## License
+
+MIT

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataService } from './ang-pagination.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AngPaginationService } from './ang-pagination.service';
 
 @Component({
   selector: 'ang-pagination',
@@ -8,10 +8,12 @@ import { DataService } from './ang-pagination.service';
 })
 export class AngPaginationComponent implements OnInit {
 
-  constructor(public dataService: DataService) {
+  constructor(public dataService: AngPaginationService) {
   }
 
   @Input('totalItems') totalItems: number;
+  @Output() pageChanged = new EventEmitter<number>();
+
   totalPages: number;
   ngOnInit() {
     let roundPages = Math.floor(this.totalItems / this.dataService.itemsPerPage);
@@ -27,6 +29,7 @@ export class AngPaginationComponent implements OnInit {
   changePage(pageNumber) {
     if (pageNumber <= this.totalPages) {
       this.dataService.page = pageNumber;
+      this.pageChanged.emit(this.dataService.page);
     }
   }
 

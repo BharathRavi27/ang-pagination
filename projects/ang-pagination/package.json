@@ -1,8 +1,25 @@
 {
   "name": "ang-pagination",
-  "version": "0.0.1",
+  "version": "1.0.4",
+  "description": "A simple lightweight package for managing pagination inside angular applications",
+  "author": "Bharath Ravi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BharathRavi27/ang-pagination.git"
+  },
+  "keywords": [
+    "pagination",
+    "angular pagination",
+    "pager"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BharathRavi27/ang-pagination/issues"
+  },
+  "homepage": "https://github.com/BharathRavi27/ang-pagination",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14"
-  }
+  },
+  "private": false
 }
