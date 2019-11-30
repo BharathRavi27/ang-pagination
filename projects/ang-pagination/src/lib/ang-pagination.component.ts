@@ -18,6 +18,12 @@ export class AngPaginationComponent implements OnInit {
     let reminderPage = this.totalItems % this.dataService.itemsPerPage;
     reminderPage > 0 ? this.totalPages = roundPages + 1 : this.totalPages = roundPages;
   }
+  get getTotalPages() {
+    let roundPages = Math.floor(this.totalItems / this.dataService.itemsPerPage);
+    let reminderPage = this.totalItems % this.dataService.itemsPerPage;
+    reminderPage > 0 ? this.totalPages = roundPages + 1 : this.totalPages = roundPages;
+    return this.totalPages;
+  }
   changePage(pageNumber) {
     if (pageNumber <= this.totalPages) {
       this.dataService.page = pageNumber;

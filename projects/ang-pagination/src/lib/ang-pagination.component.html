@@ -2,7 +2,7 @@
     <ul class="ang-pagination">
         <!-- goto first step -->
         <li *ngIf="dataService.page != 1" (click)="changePage(1)" class="ang-paination-first">
-            <a>&lt;&lt;&lt; </a>
+            <a>&lt;&lt; </a>
         </li>
 
         <!-- goto prev step -->
@@ -13,23 +13,24 @@
         <li (click)="changePage(dataService.page)" class="ang-paination-step active">
             <a> {{dataService.page}}</a>
         </li>
-        <li *ngIf="dataService.page < totalPages" (click)="changePage(dataService.page + 1)" class="ang-paination-step">
+        <li *ngIf="dataService.page < getTotalPages" (click)="changePage(dataService.page + 1)"
+            class="ang-paination-step">
             <a> {{dataService.page + 1}}</a>
         </li>
-        <li *ngIf="dataService.page+2 < totalPages" (click)="changePage(dataService.page + 2)"
+        <li *ngIf="dataService.page+2 < getTotalPages" (click)="changePage(dataService.page + 2)"
             class="ang-paination-step">
             <a> {{dataService.page + 2}}</a>
         </li>
 
         <!-- goto next step -->
-        <li *ngIf="dataService.page != totalPages" (click)="changePage(dataService.page + 1)"
+        <li *ngIf="dataService.page != getTotalPages" (click)="changePage(dataService.page + 1)"
             class="ang-paination-next">
             &gt;
         </li>
 
         <!-- goto last step -->
-        <li *ngIf="dataService.page != totalPages" (click)="changePage(totalPages)" class="ang-paination-last">
-            <a>&gt;&gt;&gt;</a>
+        <li *ngIf="dataService.page != getTotalPages" (click)="changePage(getTotalPages)" class="ang-paination-last">
+            <a>&gt;&gt;</a>
         </li>
     </ul>
 </div>
