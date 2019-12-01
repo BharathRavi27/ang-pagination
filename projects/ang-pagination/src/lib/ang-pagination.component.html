@@ -1,5 +1,5 @@
 <div>
-    <ul class="ang-pagination">
+    <ul *ngIf="totalItems != 0" class="ang-pagination">
         <!-- goto first step -->
         <li *ngIf="dataService.page != 1" (click)="changePage(1)" class="ang-paination-first">
             <a>&lt;&lt; </a>

@@ -1,6 +1,6 @@
 {
   "name": "ang-pagination",
-  "version": "1.0.4",
+  "version": "1.0.54",
   "description": "A simple lightweight package for managing pagination inside angular applications",
   "author": "Bharath Ravi",
   "repository": {

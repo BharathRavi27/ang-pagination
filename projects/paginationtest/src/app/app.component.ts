@@ -13,7 +13,7 @@ export class AppComponent {
   data: any[] = [];
   ngOnInit() {
     this.http.get<any[]>("https://jsonplaceholder.typicode.com/posts").subscribe(data => {
-      this.data = data;
+      // this.data = data;
     })
   }
   updateItemsPerpage(e) {
